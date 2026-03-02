@@ -28,7 +28,7 @@ This app is fan-made and not affiliated with the developers of Barony.
     const divider = "-".repeat(longestLine);
 
     return (
-        <div className="fixed top-6 right-6 z-40">
+        <div className="flex gap-4 text-sm sm:text-base">
             <a
                 href="https://github.com/urnge/barony-scroll-tracker"
                 target="_blank"

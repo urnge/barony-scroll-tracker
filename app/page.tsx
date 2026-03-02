@@ -75,8 +75,27 @@ export default async function Home() {
 
   return (
     <main className="relative min-h-screen text-white flex flex-col items-center p-6">
-      <h1 className="text-2xl mb-6 text-center">Barony Scroll Tracker</h1>
-      <TopLinks />
+      <div className="w-full max-w-4xl mb-8">
+
+        {/* Mobile Layout */}
+        <div className="flex flex-col items-center gap-4 sm:hidden">
+          <h1 className="text-2xl text-center">Barony Scroll Tracker</h1>
+          <TopLinks />
+        </div>
+
+        {/* Desktop Layout */}
+        <div className="hidden sm:flex relative items-center justify-center">
+
+          <h1 className="text-2xl text-center">Barony Scroll Tracker</h1>
+
+          <div className="absolute right-0"><TopLinks /></div>
+
+        </div>
+
+      </div>
+
+
+
 
       <CreateCharacterForm action={createCharacter} />
 
