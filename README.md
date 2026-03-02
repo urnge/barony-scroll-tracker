@@ -1,6 +1,6 @@
 # Barony Scroll Tracker
 
-A fan-made web app that creates a database to conveniently track the discovery of scrolls in the video game ** Barony **
+A fan-made web app that creates a database to conveniently track the discovery of scrolls in the video game **Barony**
 
 ## Features
 
@@ -16,6 +16,10 @@ A fan-made web app that creates a database to conveniently track the discovery o
 - PostgreSQL
 - Prisma
 - Vercel
+
+## Live Site
+
+[View the live site here](https://barony-scroll-tracker.vercel.app/)
 
 ## Disclaimer
 

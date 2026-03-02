@@ -30,8 +30,7 @@ This app is fan-made and not affiliated with the developers of Barony.
     return (
         <div className="fixed top-6 right-6 z-40">
             <a
-                {/* todo: set github link when repo is ready */...TopLinks}
-                href="#"
+                href="https://github.com/urnge/barony-scroll-tracker"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:underline"
