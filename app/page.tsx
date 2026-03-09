@@ -2,11 +2,12 @@
 import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import { getSessionId } from "@/lib/session";
-import { getOrCreateSessionId } from "@/lib/session";
+import { cookies } from "next/headers";
 import { DEFAULT_SCROLL_LABELS } from "@/lib/scrolls";
 import CharacterCard from "@/components/CharacterCard";
 import TopLinks from "@/components/TopLinks";
 import CreateCharacterForm from "@/components/CreateCharacterForm";
+import { randomUUID } from "crypto";
 
 // server action to create a new character
 async function createCharacter(characterData: FormData) {
@@ -14,7 +15,14 @@ async function createCharacter(characterData: FormData) {
   "use server";
 
   // get sessionId from cookies
-  const sessionId = await getOrCreateSessionId();
+  let sessionId = await getSessionId();
+
+  // if no sessionId, create one
+  if (!sessionId) {
+    sessionId = randomUUID();
+    const cookieStore = await cookies();
+    cookieStore.set("sessionId", sessionId, { path: "/", httpOnly: true, sameSite: "lax", secure: process.env.NODE_ENV === "production" });
+  }
 
   const name = characterData.get("name") as string;
 
@@ -47,6 +55,7 @@ async function deleteCharacter(characterData: FormData) {
   const characterId = characterData.get("id") as string;
   const sessionId = await getSessionId();
 
+  // if no sessionId, show error message
   if (!sessionId) {
     throw new Error("No session found");
   }
