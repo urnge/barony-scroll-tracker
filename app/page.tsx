@@ -21,7 +21,7 @@ async function createCharacter(characterData: FormData) {
   if (!sessionId) {
     sessionId = randomUUID();
     const cookieStore = await cookies();
-    cookieStore.set("sessionId", sessionId, { path: "/", httpOnly: true, sameSite: "lax", secure: process.env.NODE_ENV === "production" });
+    cookieStore.set("sessionId", sessionId, { path: "/", httpOnly: true, sameSite: "lax", secure: process.env.NODE_ENV === "production", maxAge: 31536000 }); // expires in 1 year 
   }
 
   const name = characterData.get("name") as string;
